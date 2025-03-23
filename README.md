@@ -30,8 +30,8 @@ The number π is an irrational number whose decimal expansion extends infinitely
     - pi_decimals.txt: File containing the decimal expansion of π (generated or preloaded).
     - test_sequences.txt: Optional file with sequences to test (e.g., for searching).
   - **visualizations/**: Directory for generated visualizations.
-    - digit_frequency.png: Histogram showing the frequency of digits in π's decimals.
-    - sequence_positions.png: Visualization of the positions of found sequences (placeholder for future implementation).
+    - digit_frequency_pi.png: Histogram showing the frequency of digits in π's decimals.
+    - sequence_positions_pi.png: Visualization of the positions of found sequences (placeholder for future implementation).
   - **docs/**: Documentation files for the project.
     - pi_normal_hypothesis.md: Document explaining the normality hypothesis of π and its philosophical implications.
     - user_guide.md: Guide on how to use the project and its features.
