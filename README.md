@@ -42,7 +42,7 @@ The number π is an irrational number whose decimal expansion extends infinitely
       - `result.html`: Page to display the digit frequency histogram.
      **`static/`**: Static files for the web interface (CSS, JavaScript).
       - `style.css`: CSS file for styling the web interface.
-      **`notebooks/`**: Jupyter notebooks for interactive exploration.
+   **`notebooks/`**: Jupyter notebooks for interactive exploration.
       - `PiSequence.ipynb`: Interactive notebook to explore the PiSequence.
   - **`README.md`**: Project overview, instructions, and documentation.
   - **`requirements.txt`**: List of Python dependencies required for the project.
