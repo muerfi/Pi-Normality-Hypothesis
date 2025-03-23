@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PiSequenceExplorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>PiSequenceExplorer</h1>
+    <p>Search for a sequence in the decimals of π!</p>
+    <form method="POST">
+        <label for="sequence">Enter a sequence of digits:</label>
+        <input type="text" id="sequence" name="sequence" value="{{ sequence or '' }}" required>
+        <button type="submit">Search</button>
+    </form>
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+    <p><a href="{{ url_for('frequency') }}">View digit frequency</a></p>
+</body>
+</html>
