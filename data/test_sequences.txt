@@ -1,0 +1,30 @@
+data/test_sequences.txt
+Example sequences to search for in π's decimals
+
+Random digit sequences
+12345
+987654
+
+A birth date (March 15, 1995 → 19950315)
+19950315
+
+A phone number (1234567890)
+1234567890
+
+The first few prime numbers (from meaningful_sequences.py)
+2
+3
+5
+7
+11
+13
+17
+19
+23
+29
+
+A binary-encoded message ("HI" in ASCII → "01001000 01001001")
+0100100001001001
+
+A longer sequence for testing
+31415926535  # First 11 decimals of π
