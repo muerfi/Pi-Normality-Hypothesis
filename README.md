@@ -17,7 +17,7 @@ The number π is an irrational number whose decimal expansion extends infinitely
 
 ## Repository Structure
 
-- **`PiSequenceExplorer/`**: Main project directory.
+- **`PiSequence/`**: Main project directory.
   - **`src/`**: Contains Python source code for the project.
     - `pi_generator.py`: Script to generate or load the decimal expansion of π.
     - `sequence_search.py`: Script to search for specific sequences within π's decimals.
