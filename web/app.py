@@ -1,16 +1,22 @@
 # web/app.py
 from flask import Flask, render_template, request
 import os
-from src.sequence_search import search_sequence, load_pi_decimals
+from src.sequence_search import search_sequence
+from src.utils import load_pi_decimals
 
 app = Flask(__name__)
 
-# Ensure the digit_frequency.png exists
+# Create a symbolic link to the digit_frequency.png file for the web interface
 if not os.path.exists("static/digit_frequency.png"):
     os.symlink("../visualizations/digit_frequency.png", "static/digit_frequency.png")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """
+    Main page for searching sequences in π's decimals.
+    
+    Handles both GET (display the form) and POST (process the search) requests.
+    """
     result = None
     sequence = None
     if request.method == "POST":
@@ -25,6 +31,9 @@ def index():
 
 @app.route("/frequency")
 def frequency():
+    """
+    Page to display the digit frequency histogram.
+    """
     return render_template("result.html")
 
 if __name__ == "__main__":
