@@ -1,4 +1,4 @@
-# PiSequenceExplorer
+# PiSequence
 
 A project to explore the decimal expansion of π and the fascinating hypothesis that π is a normal number, potentially containing every possible sequence of digits.
 
