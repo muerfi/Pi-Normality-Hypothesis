@@ -4,7 +4,7 @@ A project to explore the decimal expansion of π and the fascinating hypothesis 
 
 ## Motivation
 
-The number π is an irrational number whose decimal expansion extends infinitely without repeating patterns. A captivating but unproven hypothesis suggests that π is a normal number, meaning that each digit from 0 to 9 appears with equal frequency, and every finite sequence of digits can be found somewhere in its decimals. If true, this implies that any combination of digits—such as a credit card number, phone number, or secret code—could be found within π's infinite decimals. In other words, π might contain all possible numerical information, including computer code, encoded texts, and even images converted to binary. This project explores this property by allowing users to search for sequences, analyze digit frequencies, and reflect on the philosophical implications of this hypothesis.
+The number π is an irrational number whose decimal expansion extends infinitely without repeating patterns. A captivating but unproven hypothesis suggests that π is a normal number, meaning that each digit from 0 to 9 appears with equal frequency, and every finite sequence of digits can be found somewhere in its decimals. If true, this implies that any combination of digits such as a credit card number, phone number, or secret code could be found within π's infinite decimals. In other words, π might contain all possible numerical information, including computer code, encoded texts, and even images converted to binary. This project explores this property by allowing users to search for sequences, analyze digit frequencies, and reflect on the philosophical implications of this hypothesis.
 
 ## Features
 
