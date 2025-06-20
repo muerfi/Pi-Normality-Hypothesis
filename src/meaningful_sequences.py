@@ -14,6 +14,8 @@ def search_sequence(sequence, pi_decimals):
         int or None: The position of the first occurrence of the sequence, or None if not found.
     """
     position = pi_decimals.find(sequence)
+    if position == -1:
+        return None
     return position
 
 def text_to_binary(text):
