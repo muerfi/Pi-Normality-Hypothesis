@@ -1,4 +1,3 @@
-data/test_sequences.txt
 Example sequences to search for in π's decimals
 
 Random digit sequences

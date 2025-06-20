@@ -55,3 +55,26 @@ The number π is an irrational number whose decimal expansion extends infinitely
 - Python libraries: `mpmath`, `matplotlib`, `flask`
   ```bash
   pip install -r requirements.txt
+```
+
+## Usage
+
+Generate the decimals of π and explore them using the command line tools or the web interface.
+
+1. **Generate decimals**
+   ```bash
+   python src/pi_generator.py
+   ```
+2. **Search for a sequence**
+   ```bash
+   python src/sequence_search.py --sequence 314159
+   ```
+3. **Start the web interface**
+   ```bash
+   python web/app.py
+   ```
+
+Run the unit tests with:
+```bash
+python -m unittest
+```
