@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>Digit Frequency in π's Decimals</h1>
-    <img src="{{ url_for('static', filename='digit_frequency.png') }}" alt="Digit Frequency">
+
+    {% if plot_available %}
+        <img src="{{ url_for('static', filename='digit_frequency.png') }}" alt="Digit frequency histogram">
+    {% else %}
+        <p>Plot not available yet. Run <code>python src/frequency_analysis.py</code> first.</p>
+    {% endif %}
+
     <p><a href="{{ url_for('index') }}">Back to search</a></p>
 </body>
 </html>

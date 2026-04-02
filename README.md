@@ -1,80 +1,90 @@
 # PiSequence
 
-A project to explore the decimal expansion of π and the fascinating hypothesis that π is a normal number, potentially containing every possible sequence of digits.
+PiSequence is a small Python project for exploring the decimal expansion of π.
+It does **not** try to prove that π is normal. Instead, it provides practical tools to:
 
-## Motivation
+- generate a local file of π digits,
+- search for digit sequences,
+- inspect digit frequencies,
+- and experiment with simple examples (including binary-encoded text).
 
-The number π is an irrational number whose decimal expansion extends infinitely without repeating patterns. A captivating but unproven hypothesis suggests that π is a normal number, meaning that each digit from 0 to 9 appears with equal frequency, and every finite sequence of digits can be found somewhere in its decimals. If true, this implies that any combination of digits such as a credit card number, phone number, or secret code could be found within π's infinite decimals. In other words, π might contain all possible numerical information, including computer code, encoded texts, and even images converted to binary. This project explores this property by allowing users to search for sequences, analyze digit frequencies, and reflect on the philosophical implications of this hypothesis.
+The project is intentionally lightweight and educational.
+
+## What this project does (and does not do)
+
+- ✅ It helps you inspect finite prefixes of π and test ideas on real data.
+- ✅ It shows how often digits 0-9 appear in the sampled prefix.
+- ✅ It lets you look up where a sequence first appears.
+- ❌ It does **not** establish statistical normality.
+- ❌ It does **not** imply that a sequence has semantic meaning just because it appears.
 
 ## Features
 
-- Generate or load the decimal expansion of π (up to 1 million decimals or more)
-- Search for specific sequences in π's decimals (e.g., a birth date or phone number)
-- Analyze the frequency of digits (0 to 9) with a histogram visualization
-- Search for meaningful sequences (prime numbers, encoded messages in binary, etc..)
-- Documentation on the normality hypothesis and its philosophical implications
-- Interactive web interface to explore π's decimals
+- Generate and store the first `N` digits of π (`src/pi_generator.py`)
+- Search for a sequence in those digits (`src/sequence_search.py`)
+- Plot digit frequencies as a histogram (`src/frequency_analysis.py`)
+- Run exploratory sequence demos (`src/meaningful_sequences.py`)
+- Use a minimal Flask web UI (`web/app.py`)
 
-## Repository Structure
+## Repository layout
 
-- **PiSequence/**: Main project directory
-  - **notebooks/**: Contains Jupyter Notebooks for exploring the project
-    - PiSequence.ipynb: Jupyter Notebook providing a comprehensive exploration of the project, covering all scripts, analyses, and visualizations
-  - **src/**: Contains Python source code for the project
-    - pi_generator.py: Script to generate or load the decimal expansion of π
-    - sequence_search.py: Script to search for specific sequences within π's decimals
-    - frequency_analysis.py: Script to analyze the frequency of digits (0 to 9) in π's decimals
-    - meaningful_sequences.py: Script to search for meaningful sequences, such as prime numbers or encoded messages
-    - utils.py: Utility functions shared across scripts
-  - **data/**: Stores data files used by the project
-    - pi_decimals.txt: File containing the decimal expansion of π (generated or preloaded)
-    - test_sequences.txt: Optional file with sequences to test
-  - **visualizations/**: Directory for generated visualizations
-    - digit_frequency_pi.png: Histogram showing the frequency of digits in π's decimals
-    - sequence_positions_pi.png: Visualization of the positions of found sequences (placeholder for future implementation)
-  - **docs/**: Documentation files for the project
-    - pi_normal_hypothesis.md: Document explaining the normality hypothesis of π and its philosophical implications
-    - user_guide.md: Guide on how to use the project and its features
-  - **tests/**: Unit tests to validate the project’s functionality
-    - test_search.py: Tests for the sequence searching functionality
-  - **web/**: Web interface for interactive exploration
-    - app.py: Flask application for the web interface
-    - **templates/**: HTML templates for the web interface
-      - index.html: Main page for sequence searching
-      - result.html: Page to display the digit frequency histogram
-    - **static/**: Static files for the web interface (CSS, JavaScript)
-      - style.css: CSS file for styling the web interface
-  
-  - **README.md**: Project overview, instructions, and documentation
-  - **requirements.txt**: List of Python dependencies required for the project
-  - **CONTRIBUTING.md**: Guide for contributors on how to contribute to the project
-
-## Prerequisites
-
-- Python 3.x
-- Python libraries: `mpmath`, `matplotlib`, `flask`
-  ```bash
-  pip install -r requirements.txt
+```text
+Pi-Normality-Hypothesis/
+├── src/
+│   ├── pi_generator.py
+│   ├── sequence_search.py
+│   ├── frequency_analysis.py
+│   ├── meaningful_sequences.py
+│   └── utils.py
+├── web/
+│   ├── app.py
+│   ├── templates/
+│   └── static/
+├── docs/
+│   ├── pi_normal_hypothesis.md
+│   └── user_guide.md
+├── tests/
+├── data/
+└── visualizations/
 ```
 
-## Usage
+## Requirements
 
-Generate the decimals of π and explore them using the command line tools or the web interface.
+- Python 3.10+
+- Dependencies in `requirements.txt`
 
-1. **Generate decimals**
+```bash
+pip install -r requirements.txt
+```
+
+## Quick start
+
+1. **Generate π digits** (default: 1,000,000 digits):
    ```bash
    python src/pi_generator.py
    ```
-2. **Search for a sequence**
+
+2. **Search for a sequence**:
    ```bash
    python src/sequence_search.py --sequence 314159
    ```
-3. **Start the web interface**
+
+3. **Build a digit-frequency plot**:
+   ```bash
+   python src/frequency_analysis.py
+   ```
+
+4. **Run the web app**:
    ```bash
    python web/app.py
    ```
 
-Run the unit tests with:
+## Testing
+
 ```bash
-python -m unittest
+python -m unittest discover tests
 ```
+
+## Notes on interpretation
+
+The normality of π in base 10 is still unproven. This repository should be treated as an exploratory sandbox for finite data, not as evidence of a proof.
