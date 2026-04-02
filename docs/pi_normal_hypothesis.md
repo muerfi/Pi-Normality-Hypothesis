@@ -1,24 +1,40 @@
-# The Normality Hypothesis of π and Its Implications
+# The Normality Hypothesis for π
 
-## What is a Normal Number ?
+## Definition
 
-A number is said to be *normal* if, in its decimal expansion, each digit from 0 to 9 appears with equal frequency (1/10), and every finite sequence of digits appears with the expected frequency. If π is normal, this means its decimals are completely random and contain every possible sequence.
+A real number is **normal in base 10** if every finite block of digits appears with the expected limiting frequency.
 
-## Philosophical Implications
+Examples:
+- each single digit appears with frequency `1/10`,
+- each 2-digit block appears with frequency `1/100`,
+- and so on for blocks of any length.
 
-If π is normal, then:
-- Every possible sequence of digits (phone numbers, secret codes, etc.) can be found somewhere in its decimals.
-- In theory, π could contain complex information, such as encoded texts (e.g., the entirety of *Pride and Prejudice* by Jane Austen), DNA sequences, or even images converted to binary.
-- However, this information is practically unusable because it is buried in an infinite chaos of digits.
+For π, this is a conjecture, not a theorem.
 
-## Open Questions
+## What can be tested here
 
-- What does it mean for a number like π to contain all possible information?
-- How does this relate to information theory and the concept of mathematical infinity?
-- What are the implications for cryptography or data compression?
+This repository works with a finite prefix of π (for example, the first million digits). On finite data you can:
+
+- measure empirical digit frequencies,
+- search for specific strings,
+- compare observations with what you would expect from a random-looking sequence.
+
+These checks are useful, but they are not proofs of normality.
+
+## Common misunderstanding
+
+If π were normal, then any finite sequence would eventually occur somewhere in its digits. That does **not** mean those occurrences are meaningful messages; it only reflects combinatorics on an infinite expansion.
+
+## Why this is interesting
+
+The topic sits between number theory, probability intuition, and information theory:
+
+- **Number theory:** normality is a precise asymptotic property.
+- **Statistics:** finite samples can look balanced without implying a theorem.
+- **Information:** "all finite patterns occur" does not automatically create usable structure.
 
 ## References
 
-- Pi-Search Page: [http://www.angio.net/pi/](http://www.angio.net/pi/)
-- Wikipedia article on normal numbers: [https://en.wikipedia.org/wiki/Normal_number](https://en.wikipedia.org/wiki/Normal_number)
-- "The Unreasonable Effectiveness of Mathematics in the Natural Sciences" by Eugene Wigner (1960).
+- Normal number (overview): <https://en.wikipedia.org/wiki/Normal_number>
+- Bailey and Borwein, *Normal Numbers* (survey): <https://www.davidhbailey.com/dhbpapers/normality.pdf>
+- Pi search utility (example finite lookup): <http://www.angio.net/pi/>
