@@ -1,32 +1,23 @@
-# src/sequence_search.py
+"""Compatibility wrapper for sequence search.
+
+Prefer ``python -m pi_lab search --sequence ...`` or importing from
+``pi_lab.search`` in new code.
+"""
+
 import argparse
-from src.utils import load_pi_decimals
 
+from pi_lab.digits import load_pi_digits
+from pi_lab.search import search_sequence
 
-def search_sequence(sequence, pi_decimals):
-    """
-    Search for a sequence in π's decimals.
-    
-    Args:
-        sequence (str): The sequence to search for.
-        pi_decimals (str): The decimal expansion of π.
-    
-    Returns:
-        int or None: The position of the first occurrence of the sequence, or None if not found.
-    """
-    position = pi_decimals.find(sequence)
-    if position != -1:
-        return position
-    return None
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Search for a sequence in π's decimals")
-    parser.add_argument("--sequence", required=True, help="Sequence to search for (e.g., '12345')")
+    parser = argparse.ArgumentParser(description="Search for a sequence in pi digits")
+    parser.add_argument("--sequence", required=True, help="Digit sequence to search for, e.g. 314159")
     args = parser.parse_args()
 
-    pi_decimals = load_pi_decimals()
-    position = search_sequence(args.sequence, pi_decimals)
+    pi_digits = load_pi_digits()
+    position = search_sequence(args.sequence, pi_digits)
     if position is not None:
-        print(f"Sequence '{args.sequence}' found at position {position} in π's decimals")
+        print(f"Sequence '{args.sequence}' found at zero-based position {position}.")
     else:
-        print(f"Sequence '{args.sequence}' not found in π's decimals")
+        print(f"Sequence '{args.sequence}' was not found in the loaded digits.")
