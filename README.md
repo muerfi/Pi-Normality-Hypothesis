@@ -1,83 +1,98 @@
-# PiSequence
+# pi_lab
 
-PiSequence is a small Python project for exploring the decimal expansion of π.
-It does **not** try to prove that π is normal. Instead, it provides practical tools to:
+`pi_lab` is a small Python package for exploring finite prefixes of the decimal
+expansion of π. It can generate a local digit file, search for target digit
+strings, summarize finite block frequencies, plot single-digit frequencies, and
+serve a minimal Flask UI.
 
-- generate a local file of π digits,
-- search for digit sequences,
-- inspect digit frequencies,
-- and experiment with simple examples (including binary-encoded text).
-
-The project is intentionally lightweight and educational.
-
-## What this project does (and does not do)
-
-- ✅ It helps you inspect finite prefixes of π and test ideas on real data.
-- ✅ It shows how often digits 0-9 appear in the sampled prefix.
-- ✅ It lets you look up where a sequence first appears.
-- ❌ It does **not** establish statistical normality.
-- ❌ It does **not** imply that a sequence has semantic meaning just because it appears.
+This project does **not** prove that π is normal, and it does **not** imply that
+a digit sequence has semantic meaning just because it appears in a finite prefix.
+The normality of π in base 10 remains unproven.
 
 ## Features
 
-- Generate and store the first `N` digits of π (`src/pi_generator.py`)
-- Search for a sequence in those digits (`src/sequence_search.py`)
-- Plot digit frequencies as a histogram (`src/frequency_analysis.py`)
-- Run exploratory sequence demos (`src/meaningful_sequences.py`)
-- Use a minimal Flask web UI (`web/app.py`)
+- Generate and store the first `N` characters of π's digit string, beginning with
+  the leading `3`.
+- Search a loaded finite prefix for digit sequences.
+- Count overlapping blocks with configurable block size.
+- Plot single-digit frequencies for a loaded finite prefix.
+- Run a lightweight Flask web interface.
+- Keep reusable code in the installable `pi_lab` package while leaving data,
+  notebooks, experiments, and generated visualizations outside the package.
 
 ## Repository layout
 
 ```text
 Pi-Normality-Hypothesis/
-├── src/
-│   ├── pi_generator.py
-│   ├── sequence_search.py
-│   ├── frequency_analysis.py
-│   ├── meaningful_sequences.py
-│   └── utils.py
-├── web/
-│   ├── app.py
-│   ├── templates/
-│   └── static/
-├── docs/
-│   ├── pi_normal_hypothesis.md
-│   └── user_guide.md
+├── pi_lab/
+│   ├── digits/
+│   ├── search/
+│   ├── statistics/
+│   ├── visualization/
+│   ├── web/
+│   └── utils/
+├── src/                 # Compatibility wrappers for the original scripts
+├── web/                 # Compatibility entry point and legacy assets
 ├── tests/
-├── data/
-└── visualizations/
+├── docs/
+├── notebooks/
+├── data/                # Local/generated digit data
+└── visualizations/      # Generated plots
 ```
 
-## Requirements
+## Installation
 
-- Python 3.10+
-- Dependencies in `requirements.txt`
+Install the project in editable mode from the repository root:
 
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
+
+For the legacy dependency-only workflow, `requirements.txt` is still available,
+but new development should use the package metadata in `pyproject.toml`.
 
 ## Quick start
 
-1. **Generate π digits** (default: 1,000,000 digits):
-   ```bash
-   python src/pi_generator.py
-   ```
+Generate a digit file. By default, this writes `data/pi_decimals.txt`:
 
-2. **Search for a sequence**:
-   ```bash
-   python src/sequence_search.py --sequence 314159
-   ```
+```bash
+python -m pi_lab generate --digits 1000000
+```
 
-3. **Build a digit-frequency plot**:
-   ```bash
-   python src/frequency_analysis.py
-   ```
+Search the loaded digit file for a target sequence:
 
-4. **Run the web app**:
-   ```bash
-   python web/app.py
-   ```
+```bash
+python -m pi_lab search --sequence 314159
+```
+
+Count single-digit frequencies and create `visualizations/digit_frequency.png`:
+
+```bash
+python -m pi_lab frequency --block-size 1
+```
+
+Count larger overlapping blocks without generating a plot:
+
+```bash
+python -m pi_lab frequency --block-size 2 --no-plot
+```
+
+Run the web app:
+
+```bash
+python -m pi_lab.web.app
+```
+
+## Compatibility commands
+
+The original script paths remain as thin wrappers around `pi_lab`:
+
+```bash
+python src/pi_generator.py
+python src/sequence_search.py --sequence 314159
+python src/frequency_analysis.py
+python web/app.py
+```
 
 ## Testing
 
@@ -87,4 +102,6 @@ python -m unittest discover tests
 
 ## Notes on interpretation
 
-The normality of π in base 10 is still unproven. This repository should be treated as an exploratory sandbox for finite data, not as evidence of a proof.
+All results are observations about a finite loaded prefix. Single-digit or block
+frequencies in a finite prefix are not a proof of base-10 normality. Finding a
+sequence in a prefix is a string-search result, not evidence of hidden meaning.

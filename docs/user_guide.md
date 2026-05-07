@@ -1,40 +1,55 @@
-# PiSequence User Guide
+# pi_lab User Guide
 
-This guide covers the command-line tools and web interface included in PiSequence.
+This guide covers the installable command-line tools and web interface included
+in `pi_lab`.
 
-## 1) Install dependencies
+## 1) Install the package
+
+From the repository root:
 
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
+
+This installs the reusable `pi_lab` package while keeping data, notebooks, and
+generated visualizations separate from package code.
 
 ## 2) Generate π digits
 
 Create `data/pi_decimals.txt`:
 
 ```bash
-python src/pi_generator.py
+python -m pi_lab generate --digits 1000000
 ```
 
-By default, the script writes 1,000,000 digits (without the decimal point).
+The stored string follows the original repository convention: it starts with the
+leading `3` and omits the decimal point.
 
 ## 3) Search for a sequence
 
 ```bash
-python src/sequence_search.py --sequence 12345
+python -m pi_lab search --sequence 314159
 ```
 
-The reported position is zero-based in the stored digit string.
+The reported position is zero-based in the stored digit string. A sequence that
+is absent from the loaded finite prefix might still occur later.
 
-## 4) Plot digit frequencies
+## 4) Count frequencies
+
+Count single digits and generate `visualizations/digit_frequency.png`:
 
 ```bash
-python src/frequency_analysis.py
+python -m pi_lab frequency --block-size 1
 ```
 
-This generates:
+Count larger overlapping blocks without making a single-digit plot:
 
-- `visualizations/digit_frequency.png`
+```bash
+python -m pi_lab frequency --block-size 2 --no-plot
+```
+
+These frequency counts are finite-prefix summaries only; they do not prove that
+π is normal.
 
 ## 5) Run exploratory examples
 
@@ -42,15 +57,17 @@ This generates:
 python src/meaningful_sequences.py
 ```
 
-This script demonstrates sequence lookups for a few hardcoded examples. Treat it as exploratory output, not statistical evidence.
+This compatibility script demonstrates target-string lookups for a few hardcoded
+examples. Treat it as exploratory output, not statistical evidence or semantic
+interpretation.
 
 ## 6) Launch the web interface
 
 ```bash
-python web/app.py
+python -m pi_lab.web.app
 ```
 
-Open the local URL shown by Flask (typically `http://127.0.0.1:5000`).
+Open the local URL shown by Flask, typically `http://127.0.0.1:5000`.
 
 ## 7) Run tests
 

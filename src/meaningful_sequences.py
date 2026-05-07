@@ -1,66 +1,43 @@
-# src/meaningful_sequences.py
-from src.utils import load_pi_decimals
+"""Compatibility examples for searching target digit strings.
 
+The examples are demonstrations only. A target string appearing in a finite
+prefix of pi does not imply semantic meaning.
+"""
 
-def search_sequence(sequence, pi_decimals):
-    """
-    Search for a sequence in π's decimals.
-    
-    Args:
-        sequence (str): The sequence to search for.
-        pi_decimals (str): The decimal expansion of π.
-    
-    Returns:
-        int or None: The position of the first occurrence of the sequence, or None if not found.
-    """
-    position = pi_decimals.find(sequence)
-    if position == -1:
-        return None
-    return position
+from pi_lab.digits import load_pi_digits
+from pi_lab.search import search_sequence
+
 
 def text_to_binary(text):
-    """
-    Convert text to binary (ASCII).
-    
-    Args:
-        text (str): The text to convert.
-    
-    Returns:
-        str: The binary representation of the text.
-    """
-    binary = ""
-    for char in text:
-        binary += format(ord(char), '08b')
-    return binary
+    """Convert text to an ASCII binary digit string."""
+    return "".join(format(ord(char), "08b") for char in text)
+
 
 if __name__ == "__main__":
-    pi_decimals = load_pi_decimals()
+    pi_digits = load_pi_digits()
 
-    # 1. Search for the first 10 prime numbers
     prime_numbers = ["2", "3", "5", "7", "11", "13", "17", "19", "23", "29"]
-    print("Searching for the first 10 prime numbers:")
+    print("Searching for example prime-number digit strings:")
     for prime in prime_numbers:
-        position = search_sequence(prime, pi_decimals)
+        position = search_sequence(prime, pi_digits)
         if position is not None:
-            print(f"Prime number '{prime}' found at position {position}")
+            print(f"Target '{prime}' found at zero-based position {position}")
         else:
-            print(f"Prime number '{prime}' not found")
+            print(f"Target '{prime}' not found in the loaded digits")
 
-    # 2. Search for a birth date (e.g., March 15, 1995 → 19950315)
     birth_date = "19950315"
-    position = search_sequence(birth_date, pi_decimals)
-    print("\nSearching for a birth date (19950315):")
+    position = search_sequence(birth_date, pi_digits)
+    print("\nSearching for example date-like target string (19950315):")
     if position is not None:
-        print(f"Date '{birth_date}' found at position {position}")
+        print(f"Target '{birth_date}' found at zero-based position {position}")
     else:
-        print(f"Date '{birth_date}' not found")
+        print(f"Target '{birth_date}' not found in the loaded digits")
 
-    # 3. Search for a message encoded in binary ("HI" in ASCII → "01001000 01001001")
     message = "HI"
-    binary_message = text_to_binary(message).replace(" ", "")
-    position = search_sequence(binary_message, pi_decimals)
-    print("\nSearching for an encoded message ('HI' in binary: 0100100001001001):")
+    binary_message = text_to_binary(message)
+    position = search_sequence(binary_message, pi_digits)
+    print("\nSearching for an example ASCII-binary target string ('HI'):")
     if position is not None:
-        print(f"Binary message '{binary_message}' found at position {position}")
+        print(f"Target '{binary_message}' found at zero-based position {position}")
     else:
-        print(f"Binary message '{binary_message}' not found")
+        print(f"Target '{binary_message}' not found in the loaded digits")

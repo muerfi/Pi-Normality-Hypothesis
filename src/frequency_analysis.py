@@ -1,30 +1,20 @@
-# src/frequency_analysis.py
-import matplotlib.pyplot as plt
-from src.utils import load_pi_decimals
+"""Compatibility wrapper for digit-frequency analysis.
+
+Prefer ``python -m pi_lab frequency --block-size 1`` in new code.
+"""
+
+from pi_lab.digits import load_pi_digits
+from pi_lab.statistics import digit_frequencies
+from pi_lab.visualization import plot_digit_frequencies
 
 
 def analyze_frequency(pi_decimals):
-    """
-    Analyze the frequency of digits in π's decimals and generate a histogram.
-    
-    Args:
-        pi_decimals (str): The decimal expansion of π.
-    """
-    # Count the frequency of each digit (0 to 9)
-    freq = {str(i): 0 for i in range(10)}
-    for digit in pi_decimals:
-        freq[digit] += 1
-    
-    # Create a histogram
-    plt.bar(freq.keys(), freq.values(), color='skyblue')
-    plt.xlabel("Digit")
-    plt.ylabel("Frequency")
-    plt.title("Frequency of Digits in π's Decimals")
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.savefig("visualizations/digit_frequency.png", dpi=300, bbox_inches="tight")
-    plt.close()
-    print("Histogram saved to visualizations/digit_frequency.png")
+    """Return single-digit counts and generate the default histogram."""
+    counts = digit_frequencies(pi_decimals)
+    output = plot_digit_frequencies(pi_decimals)
+    print(f"Histogram saved to {output}")
+    return counts
+
 
 if __name__ == "__main__":
-    pi_decimals = load_pi_decimals()
-    analyze_frequency(pi_decimals)
+    analyze_frequency(load_pi_digits())
