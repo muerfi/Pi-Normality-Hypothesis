@@ -3,38 +3,41 @@
 This guide covers the installable command-line tools and web interface included
 in `pi_lab`.
 
-## 1) Install the package
+## 1. Install the package
 
 From the repository root:
 
 ```bash
-pip install -e .
+python -m pip install -e .
 ```
 
-This installs the reusable `pi_lab` package while keeping data, notebooks, and
-generated visualizations separate from package code.
+For tests, install the development requirements as well:
 
-## 2) Generate π digits
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+## 2. Generate π digits
 
 Create `data/pi_decimals.txt`:
 
 ```bash
-python -m pi_lab generate --digits 1000000
+python -m pi_lab generate --digits 1000000 --overwrite
 ```
 
 The stored string follows the original repository convention: it starts with the
 leading `3` and omits the decimal point.
 
-## 3) Search for a sequence
+## 3. Search for a target string
 
 ```bash
 python -m pi_lab search --sequence 314159
 ```
 
-The reported position is zero-based in the stored digit string. A sequence that
-is absent from the loaded finite prefix might still occur later.
+The reported position is zero-based in the stored digit string. A target that is
+absent from the loaded finite prefix might still occur later in π.
 
-## 4) Count frequencies
+## 4. Count frequencies
 
 Count single digits and generate `visualizations/digit_frequency.png`:
 
@@ -48,20 +51,20 @@ Count larger overlapping blocks without making a single-digit plot:
 python -m pi_lab frequency --block-size 2 --no-plot
 ```
 
-These frequency counts are finite-prefix summaries only; they do not prove that
-π is normal.
+These counts are finite-prefix summaries only. They do not prove that π is
+normal.
 
-## 5) Run exploratory examples
+## 5. Run compatibility examples
 
 ```bash
 python src/meaningful_sequences.py
 ```
 
-This compatibility script demonstrates target-string lookups for a few hardcoded
-examples. Treat it as exploratory output, not statistical evidence or semantic
-interpretation.
+This legacy script demonstrates target-string lookups for a few hardcoded
+examples. Treat it as compatibility output only: finding a target string in a
+finite prefix is not evidence of semantic content.
 
-## 6) Launch the web interface
+## 6. Launch the web interface
 
 ```bash
 python -m pi_lab.web.app
@@ -69,8 +72,8 @@ python -m pi_lab.web.app
 
 Open the local URL shown by Flask, typically `http://127.0.0.1:5000`.
 
-## 7) Run tests
+## 7. Run tests
 
 ```bash
-python -m unittest discover tests
+pytest
 ```
