@@ -1,40 +1,49 @@
 # The Normality Hypothesis for π
 
+This page gives a short overview. See `docs/SCIENTIFIC_NOTES.md` for the more
+complete discussion used by the README.
+
 ## Definition
 
-A real number is **normal in base 10** if every finite block of digits appears with the expected limiting frequency.
+A real number is normal in base 10 if every finite block of decimal digits has
+the expected limiting frequency. For a block of length `k`, that frequency is
+`1 / 10^k`.
 
 Examples:
-- each single digit appears with frequency `1/10`,
-- each 2-digit block appears with frequency `1/100`,
-- and so on for blocks of any length.
 
-For π, this is a conjecture, not a theorem.
+- each single digit should have limiting frequency `1/10`;
+- each two-digit block should have limiting frequency `1/100`;
+- each six-digit block should have limiting frequency `1/1,000,000`;
+- the requirement applies to every finite block length.
+
+For π, base-10 normality is a conjecture, not a theorem.
 
 ## What can be tested here
 
-This repository works with a finite prefix of π (for example, the first million digits). On finite data you can:
+This repository works with finite prefixes of π. On a finite prefix, the tools
+can:
 
-- measure empirical digit frequencies,
-- search for specific strings,
-- compare observations with what you would expect from a random-looking sequence.
+- count empirical digit and block frequencies;
+- search for specified target strings;
+- compare observed finite counts with simple uniform expectations;
+- save plots or command output for inspection.
 
-These checks are useful, but they are not proofs of normality.
+These checks can be useful and reproducible. They are not proofs of normality.
 
 ## Common misunderstanding
 
-If π were normal, then any finite sequence would eventually occur somewhere in its digits. That does **not** mean those occurrences are meaningful messages; it only reflects combinatorics on an infinite expansion.
+If π were normal, every finite decimal block would occur with the expected
+limiting frequency. That mathematical statement should not be interpreted as
+semantic content. A target string appearing in a finite prefix is a string-search
+result over that prefix, nothing more.
 
 ## Why this is interesting
 
-The topic sits between number theory, probability intuition, and information theory:
+Normality is a precise meeting point of number theory, computation, and
+probability intuition. The computational challenge is to report finite evidence
+accurately while preserving the distinction between empirical summaries and
+asymptotic mathematical statements.
 
-- **Number theory:** normality is a precise asymptotic property.
-- **Statistics:** finite samples can look balanced without implying a theorem.
-- **Information:** "all finite patterns occur" does not automatically create usable structure.
+## Further reading
 
-## References
-
-- Normal number (overview): <https://en.wikipedia.org/wiki/Normal_number>
-- Bailey and Borwein, *Normal Numbers* (survey): <https://www.davidhbailey.com/dhbpapers/normality.pdf>
-- Pi search utility (example finite lookup): <http://www.angio.net/pi/>
+See `docs/REFERENCES.md`.
