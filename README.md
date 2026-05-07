@@ -97,7 +97,8 @@ python web/app.py
 ## Testing
 
 ```bash
-python -m unittest discover tests
+python -m pip install -r requirements.txt -r requirements-dev.txt
+pytest
 ```
 
 ## Notes on interpretation
